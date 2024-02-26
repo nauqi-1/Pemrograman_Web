@@ -1,0 +1,52 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("img/sanrio-wp.jpg");
+    line-height: 1.65;
+    padding-bottom: 1000px;
+}
+
+.container-satu {
+    width: 850px;
+    margin: 50px auto;
+    background-color: lightpink;
+    border-style: solid;
+    border-color: black;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.sidebar-satu {
+    width: 800px;
+    height: 500px;
+    margin: 10px;
+    background-color: #ffdddd;
+    padding: 5px;
+    padding-top: 0px;
+    border-style: dotted;
+
+}
+
+.kolom-utama {
+    width: 2500px;
+    height: 500px;
+    margin-top: 20px;
+    margin: 10px;
+    background-color: #ffdddd;
+    padding: 5px;
+    border-style: dotted;
+}
+
+.sidebar-dua {
+    width: 800px;
+    margin-top: 20px;
+    margin: 10px;
+    background-color: #ffdddd;
+    padding: 5px;    
+    border-style: dotted;
+}
