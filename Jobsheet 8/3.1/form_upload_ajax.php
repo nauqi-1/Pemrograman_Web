@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="upload.css">
     <title>Unggah File Dokumen</title>
 </head>
 <body>
