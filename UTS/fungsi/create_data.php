@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $username = $_SESSION['username'];
 
-    $query = "INSERT INTO missing_person_data (name, gender, location, date, description, fk_username) VALUES ('$name','$gender' '$location', '$date', '$description', '$username')";
+    $query = "INSERT INTO missing_person_data (name, gender, location, date, description, fk_username) VALUES ('$name','$gender', '$location', '$date', '$description', '$username')";
 
     if (mysqli_query($connect, $query)) {
         header('Location: ../home.php');
