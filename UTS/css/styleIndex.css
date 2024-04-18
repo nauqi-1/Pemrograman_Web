@@ -29,7 +29,7 @@ header {
 
 .btn {
     display: inline-block;
-    background-color: #333;
+    background-color: #404040;
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
@@ -38,5 +38,5 @@ header {
 }
 
 .btn:hover {
-    background-color: #555;
+    background-color: #333;
 }
