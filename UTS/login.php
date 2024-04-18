@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($cek) {
         $_SESSION['username'] = $username;
+        setcookie('username', $_SESSION['username'], time() + (3000) , "/");
         header('Location: home.php');
         exit;
     } else {

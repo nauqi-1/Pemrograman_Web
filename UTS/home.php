@@ -2,19 +2,7 @@
 session_start();
 require 'koneksi.php';
 
-if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
-    header('Location: loginForm.html');
-    exit;
-}
-
-$query = "SELECT * FROM missing_person_data";
-$result = mysqli_query($connect, $query);
-
-$reports = [];
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $reports[] = $row;
-}
+include ("fungsi/read_data.php");
 
 ?>
 <!DOCTYPE html>
@@ -22,8 +10,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/styleHome.css">
 </head>
 <body>
     <h1>Halo, <?php echo $_SESSION['username']; ?>. Selamat datang.</h1>
@@ -32,9 +20,9 @@ while ($row = mysqli_fetch_assoc($result)) {
     <form method="post" action="fungsi/create_data.php">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
-        <label for="location">Location Last Seen:</label>
+        <label for="location">Last Known Location:</label>
         <input type="text" id="location" name="location" required><br><br>
-        <label for="date">Date Last Seen:</label>
+        <label for="date">Last Seen Date:</label>
         <input type="date" id="date" name="date" required><br><br>
         <label for="description">Description:</label><br>
         <textarea id="description" name="description" required></textarea><br><br>
@@ -46,7 +34,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <tr>
             <th>Name</th>
             <th>Last Known Location</th>
-            <th>Date</th>
+            <th>Last Seen Date</th>
             <th>Description</th>
             <th>Submitter</th>
             <th>Actions</th>
@@ -63,7 +51,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <td>
                     <?php if ($_SESSION['username'] === $report['fk_username']): ?>
                         <a href="fungsi/update_data.php?id=<?php echo $report['id']; ?>">Edit</a>
-                        <a href="fungsi/delete_data.php?id=<?php echo $report['id']; ?>">Delete</a>
+                        <a href="fungsi/delete_data.php?id=<?php echo $report['id']; ?>" onclick="return confirm('Are you sure you want to delete this report?')">Delete</a>
                     <?php endif; ?>
                 </td>
             </tr>

@@ -6,12 +6,7 @@ if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
     exit;
 }
 
-include("koneksi.php");
-
-
-$query = "SELECT * FROM missing_person_data";
-$result = mysqli_query($connect, $query);
-$reports = mysqli_fetch_all($result, MYSQLI_ASSOC);
+include("../koneksi.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
@@ -21,11 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_SESSION['username'];
 
     $query = "INSERT INTO missing_person_data (name, location, date, description, fk_username) VALUES ('$name', '$location', '$date', '$description', '$username')";
+
     if (mysqli_query($connect, $query)) {
-        header('Location: home.php');
+        header('Location: ../home.php');
         exit;
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($connect);
     }
 }
+
+mysqli_close($connect);
 ?>

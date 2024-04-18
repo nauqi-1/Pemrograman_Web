@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'koneksi.php';
+include ("../koneksi.php");
 
 if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
     header('Location: loginForm.html');
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = "UPDATE missing_person_data SET name = '$name', location = '$location', date = '$date', description = '$description' WHERE id = '$id'";
 
     if (mysqli_query($connect, $query)) {
-        header('Location: home.php');
+        header('Location: ../home.php');
         exit;
     } else {
         echo "Failed to update report: " . mysqli_error($connect);
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Edit Report</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/styleHome.css">
 </head>
 <body>
     <h1>Edit Report</h1>
