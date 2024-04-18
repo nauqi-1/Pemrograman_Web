@@ -10,12 +10,13 @@ include("../koneksi.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
+    $gender = $_POST['gender'];
     $location = $_POST['location'];
     $date = $_POST['date'];
     $description = $_POST['description'];
     $username = $_SESSION['username'];
 
-    $query = "INSERT INTO missing_person_data (name, location, date, description, fk_username) VALUES ('$name', '$location', '$date', '$description', '$username')";
+    $query = "INSERT INTO missing_person_data (name, gender, location, date, description, fk_username) VALUES ('$name','$gender' '$location', '$date', '$description', '$username')";
 
     if (mysqli_query($connect, $query)) {
         header('Location: ../home.php');
